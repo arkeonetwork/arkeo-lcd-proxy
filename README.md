@@ -80,7 +80,7 @@ docker pull ghcr.io/arkeonetwork/arkeo-lcd-proxy:latest
 3) Run the container:
 
 ```bash
-docker run -d --name lcd-proxy --restart unless-stopped \
+docker run -d --name arkeo-lcd-proxy --restart unless-stopped \
   --env-file /opt/arkeo-lcd-proxy/.env \
   -p 1318:1318 ghcr.io/arkeonetwork/arkeo-lcd-proxy:latest
 ```
