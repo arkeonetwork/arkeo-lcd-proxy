@@ -61,11 +61,26 @@ docker run -e BACKEND_LCD_URL=https://rest-seed.arkeo.network \
 
 ## Server install (public image)
 
-Create a `.env` file on the server (same format as `.env.example`), then:
+1) Create an env file on the server (same format as `.env.example`):
+
+```bash
+# /opt/arkeo-lcd-proxy/.env
+BACKEND_LCD_URL=https://rest-seed.arkeo.network
+BACKEND_RPC_URL=https://rpc-seed.arkeo.network
+LISTEN=:1318
+LOG_FILE=/root/.lcd-proxy/lcd-proxy.log
+```
+
+2) Pull the image:
 
 ```bash
 docker pull ghcr.io/arkeonetwork/arkeo-lcd-proxy:latest
+```
+
+3) Run the container:
+
+```bash
 docker run -d --name lcd-proxy --restart unless-stopped \
-  --env-file /path/to/.env \
+  --env-file /opt/arkeo-lcd-proxy/.env \
   -p 1318:1318 ghcr.io/arkeonetwork/arkeo-lcd-proxy:latest
 ```
