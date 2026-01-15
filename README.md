@@ -58,3 +58,14 @@ Example:
 docker run -e BACKEND_LCD_URL=https://rest-seed.arkeo.network \
   -p 1318:1318 ghcr.io/arkeonetwork/arkeo-lcd-proxy:latest
 ```
+
+## Server install (public image)
+
+```bash
+docker pull ghcr.io/arkeonetwork/arkeo-lcd-proxy:latest
+docker run -d --name lcd-proxy --restart unless-stopped \
+  -e BACKEND_LCD_URL=https://rest-seed.arkeo.network \
+  -e LISTEN=:1318 \
+  -e LOG_FILE=/root/.lcd-proxy/lcd-proxy.log \
+  -p 1318:1318 ghcr.io/arkeonetwork/arkeo-lcd-proxy:latest
+```
