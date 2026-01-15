@@ -1,0 +1,7 @@
+services:
+  lcd-proxy:
+    build: .
+    env_file:
+      - .env
+    ports:
+      - "1318:1318"
