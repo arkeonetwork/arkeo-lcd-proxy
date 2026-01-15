@@ -25,10 +25,11 @@ Environment variables:
 Note: `LOG_FILE` expands `~` at runtime. In a container, `~` resolves to the
 container user's home (by default `/root`).
 
-## Run locally (Docker Compose)
+## Run (Docker Compose)
 
 ```bash
-docker compose up --build -d
+docker compose pull
+docker compose up -d
 ```
 
 Test:
@@ -59,7 +60,7 @@ docker run -e BACKEND_LCD_URL=https://rest-seed.arkeo.network \
   -p 1318:1318 ghcr.io/arkeonetwork/arkeo-lcd-proxy:latest
 ```
 
-## Server install (public image)
+## Server install (Docker Compose, public image)
 
 1) Create an env file on the server (same format as `.env.example`):
 
@@ -71,16 +72,9 @@ LISTEN=:1318
 LOG_FILE=/root/.lcd-proxy/lcd-proxy.log
 ```
 
-2) Pull the image:
+2) From `/opt/arkeo-lcd-proxy` (where `docker-compose.yml` lives):
 
 ```bash
-docker pull ghcr.io/arkeonetwork/arkeo-lcd-proxy:latest
-```
-
-3) Run the container:
-
-```bash
-docker run -d --name arkeo-lcd-proxy --restart unless-stopped \
-  --env-file /opt/arkeo-lcd-proxy/.env \
-  -p 1318:1318 ghcr.io/arkeonetwork/arkeo-lcd-proxy:latest
+docker compose pull
+docker compose up -d
 ```
